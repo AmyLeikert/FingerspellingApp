@@ -7,6 +7,7 @@
 //
 
 #import "ALTableViewController.h"
+#import "ALFingerspellingViewController.h"
 
 @interface ALTableViewController ()
 @property (strong, nonatomic) NSArray *swedishArray;
@@ -118,7 +119,12 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
     return cell;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ALFingerspellingViewController *fsViewController = [[ALFingerspellingViewController alloc] init];
+    if (indexPath.section == 2 && indexPath.row == 0)
+        return [self.navigationController pushViewController:fsViewController animated:YES];
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
