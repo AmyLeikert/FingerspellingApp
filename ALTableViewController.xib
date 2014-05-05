@@ -16,6 +16,7 @@
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <color key="separatorColor" red="0.75232338449343339" green="0.69695499169288144" blue="0.81676498724489799" alpha="1" colorSpace="calibratedRGB"/>
         </tableView>
     </objects>
 </document>

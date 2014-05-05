@@ -20,10 +20,11 @@
     
     ALTableViewController *tableViewController = [[ALTableViewController alloc] init];
     
-  //  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tableViewController];
+    
+UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tableViewController];
     
   //  self.tableView = [[ALTableViewController alloc] initWithNibName:@"ALTableViewController" bundle:nil];
-       self.window.rootViewController = tableViewController;
+       self.window.rootViewController = navController;
     return YES;
 }
 
