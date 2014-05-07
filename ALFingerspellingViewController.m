@@ -31,6 +31,22 @@
     self.answerTextField.text = nil;
 }
 
+-(void)guessedRight {
+    int randomIndex = arc4random() % [_answerArray count];
+    
+    self.currentAnswer = self.answerArray[randomIndex];
+    
+    NSString *imageName = [NSString stringWithFormat:@"%@.jpg", self.currentAnswer];
+ //     self.fsImageView.layer.borderWidth = 5;
+   // self.fsImageView.layer.borderColor = [[UIColor greenColor] CGColor];
+   // [NSThread sleepForTimeInterval:3.0f];
+    
+    [self.fsImageView setImage:[UIImage imageNamed:imageName]];
+    self.fsImageView.layer.borderWidth = 0;
+    self.answerTextField.text = nil;
+
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -92,6 +108,16 @@
     if ([answer isEqualToString:self.currentAnswer]) {
         self.fsImageView.layer.borderWidth = 5;
         self.fsImageView.layer.borderColor = [[UIColor greenColor] CGColor];
+        
+        [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                         target:self
+                                       selector: @selector(guessedRight)
+                                       userInfo:nil
+                                        repeats:NO];
+        
+        
+        //[self guessedRight];
+        
     } else {
         self.fsImageView.layer.borderWidth = 5;
         self.fsImageView.layer.borderColor = [[UIColor redColor] CGColor];
