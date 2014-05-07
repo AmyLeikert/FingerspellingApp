@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ALFingerspellingViewController : UIViewController
+@interface ALFingerspellingViewController : UIViewController <UITextFieldDelegate>
 @property NSArray *answerArray;
 
 @end

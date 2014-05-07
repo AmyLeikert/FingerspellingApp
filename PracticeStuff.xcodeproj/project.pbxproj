@@ -50,6 +50,7 @@
 		24A3941B1917F7D9006DCEEA /* x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24A394011917F7D9006DCEEA /* x.jpg */; };
 		24A3941C1917F7D9006DCEEA /* y.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24A394021917F7D9006DCEEA /* y.jpg */; };
 		24A3941D1917F7D9006DCEEA /* z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24A394031917F7D9006DCEEA /* z.jpg */; };
+		24A394201919718A006DCEEA /* ChalkboardBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A3941F1919718A006DCEEA /* ChalkboardBG.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		24A394011917F7D9006DCEEA /* x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = x.jpg; sourceTree = "<group>"; };
 		24A394021917F7D9006DCEEA /* y.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = y.jpg; sourceTree = "<group>"; };
 		24A394031917F7D9006DCEEA /* z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = z.jpg; sourceTree = "<group>"; };
+		24A3941F1919718A006DCEEA /* ChalkboardBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChalkboardBG.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				2434BD3D1914736C004C5A32 /* ALAppDelegate.m */,
 				2434BD5C191473C7004C5A32 /* ALTableViewController.h */,
 				2434BD5D191473C7004C5A32 /* ALTableViewController.m */,
+				24A3941F1919718A006DCEEA /* ChalkboardBG.png */,
 				248CA25B19149A77007FC101 /* grape_PNG521.png */,
 				2434BD5E191473C7004C5A32 /* ALTableViewController.xib */,
 				24A393E51917F78B006DCEEA /* ALFingerspellingViewController.h */,
@@ -348,6 +351,7 @@
 				24A394061917F7D9006DCEEA /* c.jpg in Resources */,
 				24A394111917F7D9006DCEEA /* n.jpg in Resources */,
 				24A394121917F7D9006DCEEA /* o.jpg in Resources */,
+				24A394201919718A006DCEEA /* ChalkboardBG.png in Resources */,
 				24A3940B1917F7D9006DCEEA /* h.jpg in Resources */,
 				24A394101917F7D9006DCEEA /* m.jpg in Resources */,
 				24A3940C1917F7D9006DCEEA /* i.jpg in Resources */,

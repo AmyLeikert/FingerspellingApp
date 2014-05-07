@@ -19,6 +19,18 @@
 
 @implementation ALFingerspellingViewController
 
+-(IBAction)generatePressed:(id)sender {
+    int randomIndex = arc4random() % [_answerArray count];
+    
+    self.currentAnswer = self.answerArray[randomIndex];
+    
+    NSString *imageName = [NSString stringWithFormat:@"%@.jpg", self.currentAnswer];
+    
+    [self.fsImageView setImage:[UIImage imageNamed:imageName]];
+    self.fsImageView.layer.borderWidth = 0;
+    self.answerTextField.text = nil;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -62,12 +74,19 @@
                         @"x",
                         @"y",
                         @"z", nil];
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ChalkboardBG.png"]]];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return  YES;
 }
 
 @end

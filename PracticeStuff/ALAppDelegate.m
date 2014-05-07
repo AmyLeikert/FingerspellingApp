@@ -25,6 +25,7 @@ UINavigationController *navController = [[UINavigationController alloc] initWith
     
   //  self.tableView = [[ALTableViewController alloc] initWithNibName:@"ALTableViewController" bundle:nil];
        self.window.rootViewController = navController;
+    
     return YES;
 }
 

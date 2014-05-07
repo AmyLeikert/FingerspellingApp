@@ -15,9 +15,11 @@
 @property (strong, nonatomic) NSArray *aslArray;
 
 
+
 @end
 
-static NSString * const cellReuseIdentifier = @"cellIdentifier";
+NSString* const cellReuseIdentifier = @"cellIdentifier";
+
 @implementation ALTableViewController
 
 
@@ -28,6 +30,11 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
     self.japaneseArray = [NSArray arrayWithObjects:@"Kanji", @"particles", @"Kana", nil];
     self.aslArray = [NSArray arrayWithObjects:@"Fingerspelling", @"Numbers", @"\"School\" Vocabulary", nil];
     
+  //  ALTableViewController *tableView = [[ALTableViewController alloc] init];
+    UIImageView *chalkImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ChalkboardBG.png"]];
+    [chalkImageView setFrame:self.tableView.frame];
+    
+    self.tableView.backgroundView = chalkImageView;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -36,6 +43,12 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     self.title = @"Language Practice";
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Marker Felt" size:20.0f]
+                                                            }];
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor brownColor]];
 
 }
 
@@ -78,8 +91,33 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
     return 0;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    
+    
+    
+    
+    UILabel *myLabel = [[UILabel alloc] init];
+    myLabel.frame = CGRectMake(20, 8, 320, 20);
+  //  myLabel.font = [UIFont boldSystemFontOfSize:18];
+    myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    
+    UIView *headerView = [[UIView alloc] init];
+    [headerView addSubview:myLabel];
+    
+   // myLabel.textAlignment= UITextAlignmentCenter;
+    
+    [myLabel setFont:[UIFont fontWithName:@"Marker Felt" size:20]];
+    [myLabel setTextColor:[UIColor colorWithRed:0.396 green:0.196 blue:0 alpha:1]];
+    
+    return headerView;
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+ 
+    
     
     if (section == 0)
         return @"Swedish";
@@ -98,6 +136,11 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
      NSLog(@"Hello");
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    
+    [cell.textLabel setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:18]];
+    [cell.textLabel setTextColor:[UIColor whiteColor]];
+
     
         // The below gives a full image in a cell if there is no text in the cell.
    // cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grape_PNG521"]];
@@ -105,8 +148,11 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
         // The below gives a resized square image to the left regardless of whether or not there is text in the cell
     
     //This is just practice to see how to use images in cells. Obvs, I don't want/need grapes in here.
-   [cell.imageView setImage:[UIImage imageNamed:@"grape_PNG521"]];
+  // [cell.imageView setImage:[UIImage imageNamed:@"grape_PNG521"]];
     
+
+    cell.textLabel.textAlignment = UITextAlignmentCenter;
+
     
     // Configure the cell...
     if (indexPath.section == 0)
