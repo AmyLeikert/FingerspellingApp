@@ -44,11 +44,11 @@ NSString* const cellReuseIdentifier = @"cellIdentifier";
 
     self.title = @"Language Practice";
     [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                            NSForegroundColorAttributeName:[UIColor colorWithRed:0.522 green:0.267 blue:0 alpha:1],
                                                             NSFontAttributeName: [UIFont fontWithName:@"Marker Felt" size:20.0f]
                                                             }];
     
-    [[UINavigationBar appearance] setBarTintColor:[UIColor brownColor]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.973 green:0.722 blue:0.22 alpha:1]];
 
 }
 
@@ -109,7 +109,8 @@ NSString* const cellReuseIdentifier = @"cellIdentifier";
    // myLabel.textAlignment= UITextAlignmentCenter;
     
     [myLabel setFont:[UIFont fontWithName:@"Marker Felt" size:20]];
-    [myLabel setTextColor:[UIColor colorWithRed:0.396 green:0.196 blue:0 alpha:1]];
+    //[myLabel setTextColor:[UIColor colorWithRed:0.396 green:0.196 blue:0 alpha:1]];
+    [myLabel setTextColor:[UIColor colorWithRed:0.318 green:0.141 blue:0 alpha:1]];
     
     return headerView;
 }

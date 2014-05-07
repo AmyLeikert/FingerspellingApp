@@ -47,6 +47,11 @@
     self.answerTextField.delegate = self;
     // Do any additional setup after loading the view from its nib.
     
+    self.submitButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    self.submitButton.frame = CGRectMake(100, 100, 30, 30);
+    self.submitButton.titleLabel.text = @"A Button";
+    [self.view addSubview: self.submitButton];
+    
     self.answerArray = [NSArray arrayWithObjects:
                         @"a",
                         @"b",
@@ -76,6 +81,21 @@
                         @"z", nil];
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ChalkboardBG.png"]]];
+    
+
+    
+    [self generatePressed:nil];
+}
+
+-(IBAction)submitPressed:(id)sender {
+    NSString *answer = self.answerTextField.text;
+    if ([answer isEqualToString:self.currentAnswer]) {
+        self.fsImageView.layer.borderWidth = 5;
+        self.fsImageView.layer.borderColor = [[UIColor greenColor] CGColor];
+    } else {
+        self.fsImageView.layer.borderWidth = 5;
+        self.fsImageView.layer.borderColor = [[UIColor redColor] CGColor];
+    }
 }
 
 - (void)didReceiveMemoryWarning

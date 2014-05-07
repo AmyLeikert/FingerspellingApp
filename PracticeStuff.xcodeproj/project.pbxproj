@@ -51,6 +51,9 @@
 		24A3941C1917F7D9006DCEEA /* y.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24A394021917F7D9006DCEEA /* y.jpg */; };
 		24A3941D1917F7D9006DCEEA /* z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24A394031917F7D9006DCEEA /* z.jpg */; };
 		24A394201919718A006DCEEA /* ChalkboardBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A3941F1919718A006DCEEA /* ChalkboardBG.png */; };
+		24A394221919C944006DCEEA /* brownButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A394211919C944006DCEEA /* brownButton.png */; };
+		24A394261919D333006DCEEA /* yellowSubmit.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A394251919D333006DCEEA /* yellowSubmit.png */; };
+		24A394281919D890006DCEEA /* generateButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A394271919D890006DCEEA /* generateButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +117,9 @@
 		24A394021917F7D9006DCEEA /* y.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = y.jpg; sourceTree = "<group>"; };
 		24A394031917F7D9006DCEEA /* z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = z.jpg; sourceTree = "<group>"; };
 		24A3941F1919718A006DCEEA /* ChalkboardBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChalkboardBG.png; sourceTree = "<group>"; };
+		24A394211919C944006DCEEA /* brownButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brownButton.png; sourceTree = "<group>"; };
+		24A394251919D333006DCEEA /* yellowSubmit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowSubmit.png; sourceTree = "<group>"; };
+		24A394271919D890006DCEEA /* generateButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = generateButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +149,8 @@
 		2434BD211914736C004C5A32 = {
 			isa = PBXGroup;
 			children = (
+				24A394271919D890006DCEEA /* generateButton.png */,
+				24A394251919D333006DCEEA /* yellowSubmit.png */,
 				2434BD331914736C004C5A32 /* PracticeStuff */,
 				2434BD4C1914736C004C5A32 /* PracticeStuffTests */,
 				2434BD2C1914736C004C5A32 /* Frameworks */,
@@ -182,6 +190,7 @@
 				2434BD5E191473C7004C5A32 /* ALTableViewController.xib */,
 				24A393E51917F78B006DCEEA /* ALFingerspellingViewController.h */,
 				24A393E61917F78B006DCEEA /* ALFingerspellingViewController.m */,
+				24A394211919C944006DCEEA /* brownButton.png */,
 				24A393E71917F78B006DCEEA /* ALFingerspellingViewController.xib */,
 				2434BD3F1914736C004C5A32 /* Images.xcassets */,
 				2434BD341914736C004C5A32 /* Supporting Files */,
@@ -334,6 +343,7 @@
 				2434BD381914736C004C5A32 /* InfoPlist.strings in Resources */,
 				24A393E91917F78B006DCEEA /* ALFingerspellingViewController.xib in Resources */,
 				24A3940A1917F7D9006DCEEA /* g.jpg in Resources */,
+				24A394221919C944006DCEEA /* brownButton.png in Resources */,
 				2434BD60191473C7004C5A32 /* ALTableViewController.xib in Resources */,
 				24A394131917F7D9006DCEEA /* p.jpg in Resources */,
 				24A394041917F7D9006DCEEA /* a.jpg in Resources */,
@@ -342,10 +352,12 @@
 				24A394081917F7D9006DCEEA /* e.jpg in Resources */,
 				2434BD401914736C004C5A32 /* Images.xcassets in Resources */,
 				24A3941B1917F7D9006DCEEA /* x.jpg in Resources */,
+				24A394281919D890006DCEEA /* generateButton.png in Resources */,
 				24A394141917F7D9006DCEEA /* q.jpg in Resources */,
 				24A3941C1917F7D9006DCEEA /* y.jpg in Resources */,
 				24A394071917F7D9006DCEEA /* d.jpg in Resources */,
 				24A394051917F7D9006DCEEA /* b.jpg in Resources */,
+				24A394261919D333006DCEEA /* yellowSubmit.png in Resources */,
 				24A394161917F7D9006DCEEA /* s.jpg in Resources */,
 				24A3940F1917F7D9006DCEEA /* l.jpg in Resources */,
 				24A394061917F7D9006DCEEA /* c.jpg in Resources */,
