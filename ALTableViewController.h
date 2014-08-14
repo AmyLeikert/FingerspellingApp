@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ALTableViewController : UITableViewController 
+@interface ALTableViewController : UITableViewController  {
+    NSString *listPath;
+    NSMutableArray *array;
+}
 
 @end

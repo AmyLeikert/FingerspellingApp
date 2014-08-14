@@ -14,10 +14,21 @@
 @property (nonatomic, strong) IBOutlet UIButton *submitButton;
 @property (nonatomic, strong) IBOutlet UIButton *randomImageButton;
 @property (nonatomic, strong) NSString *currentAnswer;
+@property (nonatomic, strong) IBOutlet UIImageView *tryAgainImage;
+@property (nonatomic, strong) IBOutlet UIImageView *goodJobImage;
+@property (nonatomic, strong) IBOutlet UILabel *scoreLabel;
 
 @end
 
 @implementation ALFingerspellingViewController
+
+int score;
+
+- (IBAction)viewPressed:(id)sender{
+    [self.view endEditing:YES];
+}
+
+
 
 -(IBAction)generatePressed:(id)sender {
     int randomIndex = arc4random() % [_answerArray count];
@@ -32,6 +43,8 @@
 }
 
 -(void)guessedRight {
+    self.goodJobImage.hidden = YES;
+    score++;
     int randomIndex = arc4random() % [_answerArray count];
     
     self.currentAnswer = self.answerArray[randomIndex];
@@ -59,6 +72,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.title = @"Fingerspelling";
     self.answerTextField.delegate = self;
     // Do any additional setup after loading the view from its nib.
@@ -67,6 +81,9 @@
     self.submitButton.frame = CGRectMake(100, 100, 30, 30);
     self.submitButton.titleLabel.text = @"A Button";
     [self.view addSubview: self.submitButton];
+    
+    self.tryAgainImage.hidden = YES;
+    self.goodJobImage.hidden = YES;
     
     self.answerArray = [NSArray arrayWithObjects:
                         @"a",
@@ -102,23 +119,33 @@
     
     [self generatePressed:nil];
 }
-
+//int score = 0;
+int i = 0;
 -(IBAction)submitPressed:(id)sender {
     NSString *answer = self.answerTextField.text;
     if ([answer isEqualToString:self.currentAnswer]) {
+        i++;
+        NSString *scoreString = [NSString stringWithFormat:@"%i", i];
+        self.scoreLabel.text = scoreString;
+        
+        self.tryAgainImage.hidden = YES;
+        self.goodJobImage.hidden = NO;
         self.fsImageView.layer.borderWidth = 5;
         self.fsImageView.layer.borderColor = [[UIColor greenColor] CGColor];
         
-        [NSTimer scheduledTimerWithTimeInterval:1.0f
+        [NSTimer scheduledTimerWithTimeInterval:2
                                          target:self
                                        selector: @selector(guessedRight)
                                        userInfo:nil
                                         repeats:NO];
+     
         
         
         //[self guessedRight];
         
     } else {
+        self.tryAgainImage.hidden = NO;
+        self.goodJobImage.hidden = YES;
         self.fsImageView.layer.borderWidth = 5;
         self.fsImageView.layer.borderColor = [[UIColor redColor] CGColor];
     }

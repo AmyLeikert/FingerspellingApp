@@ -13,17 +13,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     ALTableViewController *tableViewController = [[ALTableViewController alloc] init];
     
     
-UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tableViewController];
-    
-  //  self.tableView = [[ALTableViewController alloc] initWithNibName:@"ALTableViewController" bundle:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tableViewController];
        self.window.rootViewController = navController;
     
     return YES;

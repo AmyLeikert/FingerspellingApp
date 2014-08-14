@@ -8,6 +8,7 @@
 
 #import "ALTableViewController.h"
 #import "ALFingerspellingViewController.h"
+#import "ALASLanimalViewController.h"
 
 @interface ALTableViewController ()
 @property (strong, nonatomic) NSArray *swedishArray;
@@ -22,15 +23,31 @@ NSString* const cellReuseIdentifier = @"cellIdentifier";
 
 @implementation ALTableViewController
 
+-(NSString *)docsDir {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    
+    listPath = [[self docsDir]stringByAppendingPathComponent:@"aslAnimals.plist"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:listPath]) {
+        [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle]pathForResource:@"aslAnimals" ofType:@"plist"] toPath:listPath error:nil];
+    }
+    array = [NSMutableArray arrayWithContentsOfFile:listPath];
+    NSLog(@"Count: %@", array);
+    
+    
     self.swedishArray =  [NSArray arrayWithObjects:@"colloquial", @"verbs", @"nouns", nil];
     self.japaneseArray = [NSArray arrayWithObjects:@"Kanji", @"particles", @"Kana", nil];
-    self.aslArray = [NSArray arrayWithObjects:@"Fingerspelling", @"Numbers", @"\"School\" Vocabulary", nil];
+    self.aslArray = [NSArray arrayWithObjects:@"Fingerspelling", @"Numbers", @"Animals", nil];
     
   //  ALTableViewController *tableView = [[ALTableViewController alloc] init];
+    
     UIImageView *chalkImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ChalkboardBG.png"]];
     [chalkImageView setFrame:self.tableView.frame];
     
@@ -43,10 +60,24 @@ NSString* const cellReuseIdentifier = @"cellIdentifier";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     self.title = @"Language Practice";
+    
     [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSForegroundColorAttributeName:[UIColor colorWithRed:0.522 green:0.267 blue:0 alpha:1],
-                                                            NSFontAttributeName: [UIFont fontWithName:@"Marker Felt" size:20.0f]
+                                    NSForegroundColorAttributeName:[UIColor colorWithRed:0.522 green:0.267 blue:0 alpha:1],
+                                                            
+                                        NSFontAttributeName:
+                                        [UIFont
+                                         fontWithName:@"Marker Felt" size:20.0f]
                                                             }];
+    
+   // [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.973 green:0.722 blue:0.22 alpha:1]];
+   
+    
+    
+
+    //set back button color
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor,nil] forState:UIControlStateNormal];
+    
+    
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.973 green:0.722 blue:0.22 alpha:1]];
 
@@ -57,11 +88,11 @@ NSString* const cellReuseIdentifier = @"cellIdentifier";
     if (self) {
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellReuseIdentifier];
         
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
+        //self.tableView.delegate = self;
+     //   self.tableView.dataSource = self;
     }
     
-    return self;
+   return self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,8 +111,6 @@ NSString* const cellReuseIdentifier = @"cellIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    // Return the number of rows in the section.
     if (section == 0)
         return self.swedishArray.count;
     if (section == 1)
@@ -94,32 +123,24 @@ NSString* const cellReuseIdentifier = @"cellIdentifier";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    
-    
-    
-    
     UILabel *myLabel = [[UILabel alloc] init];
     myLabel.frame = CGRectMake(20, 8, 320, 20);
-  //  myLabel.font = [UIFont boldSystemFontOfSize:18];
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    
+    [myLabel setFont:[UIFont fontWithName:@"Marker Felt" size:20]];
+    [myLabel setTextColor:[UIColor colorWithRed:0.318 green:0.141 blue:0 alpha:1]];
     
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     
-   // myLabel.textAlignment= UITextAlignmentCenter;
-    
-    [myLabel setFont:[UIFont fontWithName:@"Marker Felt" size:20]];
-    //[myLabel setTextColor:[UIColor colorWithRed:0.396 green:0.196 blue:0 alpha:1]];
-    [myLabel setTextColor:[UIColor colorWithRed:0.318 green:0.141 blue:0 alpha:1]];
-    
     return headerView;
+   // myLabel.textAlignment= UITextAlignmentCenter;
+     //[myLabel setTextColor:[UIColor colorWithRed:0.396 green:0.196 blue:0 alpha:1]];
 }
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
  
-    
-    
     if (section == 0)
         return @"Swedish";
     if (section == 1)
@@ -132,11 +153,22 @@ NSString* const cellReuseIdentifier = @"cellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-   // static NSString *cellIdentifier = @"tableCell";
-     NSLog(@"Hello");
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
+    
+    UIView *selectionView = [[UIView alloc]initWithFrame:cell.bounds];
+    
+    [selectionView setBackgroundColor:[UIColor brownColor]];
+    
+    cell.selectedBackgroundView = selectionView;
+    
+    
+//    UIButton *downloadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [downloadButton setTitle:@"Download" forState:UIControlStateNormal];
+//    [downloadButton setFrame:CGRectMake(0, 0, 100, 35)];
+//    cell.accessoryView = downloadButton;
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     [cell setBackgroundColor:[UIColor clearColor]];
     
     [cell.textLabel setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:18]];
@@ -154,8 +186,7 @@ NSString* const cellReuseIdentifier = @"cellIdentifier";
 
     cell.textLabel.textAlignment = UITextAlignmentCenter;
 
-    
-    // Configure the cell...
+
     if (indexPath.section == 0)
         cell.textLabel.text = [self.swedishArray objectAtIndex:indexPath.row];
     if (indexPath.section == 1)
@@ -167,9 +198,24 @@ NSString* const cellReuseIdentifier = @"cellIdentifier";
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+//    UIButton *downloadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [downloadButton setTitle:@"Download" forState:UIControlStateNormal];
+//    [downloadButton setFrame:CGRectMake(0, 0, 100, 35)];
+//    [tableView cellForRowAtIndexPath:indexPath].accessoryView = downloadButton;
+    
+    
     ALFingerspellingViewController *fsViewController = [[ALFingerspellingViewController alloc] init];
+    
+    ALASLanimalViewController *animalViewController = [[ALASLanimalViewController alloc] init];
+    
     if (indexPath.section == 2 && indexPath.row == 0)
         return [self.navigationController pushViewController:fsViewController animated:YES];
+    if (indexPath.section == 2 && indexPath.row == 2)
+        return [self.navigationController pushViewController:animalViewController animated:YES];
     
 }
 /*
