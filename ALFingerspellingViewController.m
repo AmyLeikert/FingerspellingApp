@@ -35,7 +35,7 @@ int score;
     
     self.currentAnswer = self.answerArray[randomIndex];
     
-    NSString *imageName = [NSString stringWithFormat:@"%@.jpg", self.currentAnswer];
+    NSString *imageName = [NSString stringWithFormat:@"%@.png", self.currentAnswer];
     
     [self.fsImageView setImage:[UIImage imageNamed:imageName]];
     self.fsImageView.layer.borderWidth = 0;
@@ -49,7 +49,7 @@ int score;
     
     self.currentAnswer = self.answerArray[randomIndex];
     
-    NSString *imageName = [NSString stringWithFormat:@"%@.jpg", self.currentAnswer];
+    NSString *imageName = [NSString stringWithFormat:@"%@.png", self.currentAnswer];
  //     self.fsImageView.layer.borderWidth = 5;
    // self.fsImageView.layer.borderColor = [[UIColor greenColor] CGColor];
    // [NSThread sleepForTimeInterval:3.0f];
